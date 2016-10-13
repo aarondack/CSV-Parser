@@ -1,10 +1,9 @@
 import unittest
 
-from test.test_main import DatabaseTestCase, ParserTestCase
+from test_main import ParserTestCase
 
 def suite():
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(DatabaseTestCase))
     suite.addTest(unittest.makeSuite(ParserTestCase))
     return suite
 

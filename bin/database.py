@@ -29,7 +29,7 @@ class MSKCCDatabase:
         """
         Runs a SQL Query and outputs a correctly formatted CSV file.
         Checks for if the SampleID in either Lane 1 or 2 exists, if it doesn't it inserts the
-        correct corresponding SampleID. Also outputs the file correctly ordered.
+        correct corresponding SampleID. Also outputs the column headers correctly ordered.
         """
         with open(file, 'w+') as output_csv:
             header_names = ['FCID', 'Lane', 'SampleID', 'SampleRef', 'Index', 'Description', 'Control', 'Recipe',
@@ -56,7 +56,6 @@ class MSKCCDatabase:
                 for row in results:
                     writer.writerow(row)
                 self.close_connection()
-                output_csv.close()
                 print('Successful write!')
             except TypeError as e:
-                raise e
+                print(e)

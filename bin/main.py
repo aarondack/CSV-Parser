@@ -10,12 +10,13 @@ class MSKCCApplication:
     @staticmethod
     def valid_file_path(parser, arg):
         try:
-            if(os.path.isfile(arg)): return arg
+            if os.path.isfile(arg): return arg
         except IOError:
             print('This file does not exist', arg)
 
-    def run(self):
-        parser = argparse.ArgumentParser(description='Takes in CSV files or connects to a MySQL database and returns a formatted CSV')
+    def arguments(self):
+        parser = argparse.ArgumentParser(
+            description='Takes in CSV files or connects to a MySQL database and returns a formatted CSV')
         parser.add_argument(
             '-f',
             dest="filenames",
@@ -30,14 +31,16 @@ class MSKCCApplication:
             help="Reads from MySQL database and outputs to designated file",
             type=lambda x: self.valid_file_path(parser, x)
         )
-        args = parser.parse_args()
+        return parser.parse_args()
 
+    def run(self):
+        args = self.arguments()
         if(args.filenames):
             csvobject = CSVParser(args.filenames[0], args.filenames[1])
-            csvobject.open_csv_file()
+            csvobject.format_csv_files()
         elif(args.output):
             print('We are connecting to the database...')
-            db = MSKCCDatabase() #Here is where we would pass in the getDBHandle()
+            db = MSKCCDatabase() # Here is where we would pass in the getDBHandle()
             db.write_to_file('SELECT * from samplesheet',args.output[0])
         else:
             assert False, "Unhandled"
