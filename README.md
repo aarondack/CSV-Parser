@@ -20,3 +20,5 @@ Examples:
     python main.py -f '/my/path/to/file', '/my/path/to/outputfile'
     python main.py -db '/my/path/to/outputfile'
 ```
+
+More tests needed 😅
