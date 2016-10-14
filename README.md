@@ -1,4 +1,4 @@
-# csv-parser
+# CSV-Parser
 
 Simple app that has some pre-defined parameters (headers) because custom built for someone. Can be extended as you please. Essentially has the skeleton
 to connect to a MySQL database, read from a given table and order headers and data correctly. If data is not included in rows, it will insert a duplicate.
