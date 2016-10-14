@@ -33,4 +33,3 @@ class ParserTestCase(unittest.TestCase):
         with open(self.output_file, 'r') as output_file:
             parsed_data = [row for row in csv.reader(output_file.read().splitlines())]
             self.assertEqual(parsed_data[1], ['H9EX','1','123-T','HUMAN','CGATGT','Tumor','N','l','AY|John;Doe|M123|Male','IMPACTv3-20140001'])
-

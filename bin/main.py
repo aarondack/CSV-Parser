@@ -4,9 +4,9 @@ __email__ = 'adackbusiness@gmail.com'
 
 import argparse, os
 from parser import CSVParser
-from database import MSKCCDatabase
+from database import MySQL
 
-class MSKCCApplication:
+class CSVApp:
     @staticmethod
     def valid_file_path(parser, arg):
         try:
@@ -40,12 +40,12 @@ class MSKCCApplication:
             csvobject.format_csv_files()
         elif(args.output):
             print('We are connecting to the database...')
-            db = MSKCCDatabase() # Here is where we would pass in the getDBHandle()
-            db.write_to_file('SELECT * from samplesheet',args.output[0])
+            db = MySQL() # Here is where you would pass in a MySQL connection
+            db.write_to_file('SELECT * from foobar',args.output[0])
         else:
             assert False, "Unhandled"
 
 if __name__ == "__main__":
-    app = MSKCCApplication()
+    app = CSVApp()
     app.run()
 

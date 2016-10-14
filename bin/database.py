@@ -1,6 +1,7 @@
 import csv
 
-class MSKCCDatabase:
+
+class MySQL:
     def __init__(self, db_connection):
         """
         Currently a skeleton of connecting to a MySQL database. This class assumes that
